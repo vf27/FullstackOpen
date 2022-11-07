@@ -1,6 +1,34 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+const Title = (props) => {       
+  return  <h1>{props.course}</h1>
+}
+
+// ----Otra forma
+//const Title = (props) => {    
+// const  {course} = props;    igual : // const course = props.course   
+//return  <h1>{course}</h1>
+//}
+
+// ----Otra forma mas
+//const Title = ({course}) =>  <h1>{course}</h1> -> de esta manera en lugar de simepre poner props, se extrae la propiedad del objeto
+
+const Contenido = (props) => {    
+    return (
+      <div>
+          <p> {props.part1} {props.exercises1} </p>
+          <p> {props.part2} {props.exercises2} </p>
+          <p> {props.part3} {props.exercises3} </p>
+      </div>
+  )
+
+}
+const Total = (props) => { 
+  return <p>Number of exercises {props.total} </p>
+  
+}
+
 const App = () => {
   const course = 'Half Stack application development'
   const part1 = 'Fundamentals of React'
@@ -12,11 +40,18 @@ const App = () => {
 
   return (
     <div>
-      <h1>{course}</h1>
-      <p> {part1} {exercises1} </p>
-      <p> {part2} {exercises2}  </p>
-      <p> {part3} {exercises3} </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+      <Title course = {course}/>
+      <Contenido 
+      part1 = {part1} 
+      part2 = {part2}
+      part3 = {part3}
+      exercises1 = {exercises1}
+      exercises2 = {exercises2}
+      exercises3 = {exercises3}
+      />
+
+      <Total total = {exercises1 + exercises2 + exercises3}/>
+
     </div>
   )
 }
